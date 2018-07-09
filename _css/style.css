@@ -1,9 +1,40 @@
-
-
-div.card-panel{
-    margin-top: 0;
+header#start .card-panel{
+    margin-top: 0px;
 }
 
-div#icons-start i{
+div#content-start i{
     margin-left: 15px;
+    margin-top: 2px;
+}
+
+div#title-start h1{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+div#title-start h5{
+    font-family: 'Roboto', sans-serif;
+}
+
+div#content-start a{
+    color: #ffffff;
+}
+
+
+div#content-start .fa-github:hover{
+    transition: 0.8s;
+    color: #000000;
+}
+
+div#content-start .fa-linkedin:hover{
+    transition: 0.8s;
+    color: #4875B4;
+}
+
+div#content-start .fa-envelope:hover{
+    transition: 0.8s;
+    color: #000000;
+}
+
+footer div#content-footer .card-panel{
+    margin-bottom: 0px;
 }
