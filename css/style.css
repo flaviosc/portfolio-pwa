@@ -10,7 +10,7 @@ div#content-start i{
 
 div#title-start h1{
     font-family: 'Encode Sans Semi Expanded', sans-serif;
-    margin-top: 200px;
+    margin-top: 100px;
 }
 
 div#title-start h5{
@@ -22,8 +22,19 @@ div#content-start a{
     color: #ffffff;
 }
 
-#button{
+div#verMais{
     margin-top: 25px;
+}
+
+div#verMais a{
+    -webkit-transition: color 2s; /* Safari */
+    transition:  2s;
+    color: #ffffff;
+    
+}
+
+div#verMais a:hover{
+    color: #000;
 }
 
 div#content-start .fa-github:hover{
