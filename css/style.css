@@ -1,6 +1,17 @@
-header#start .card-panel{
+body, html, header{
+    width: 100%;
+    height: 100%;
+    min-width: 274px;
+}
+
+header .card-panel {
     margin-top: 0px;
     height: 100vh;
+    vertical-align:middle;
+}
+
+#title-start{
+    margin-top: 20%;
 }
 
 div#content-start i{
@@ -10,7 +21,6 @@ div#content-start i{
 
 div#title-start h1{
     font-family: 'Encode Sans Semi Expanded', sans-serif;
-    margin-top: 100px;
 }
 
 div#title-start h5{
@@ -37,7 +47,7 @@ div#verMais a:hover{
     color: #000;
 }
 
-div#content-start .fa-github:hover{
+ .fa-github:hover, .fa-envelope:hover{
     transition: 0.8s;
     color: #000000;
 }
@@ -47,10 +57,6 @@ div#content-start .fa-linkedin:hover{
     color: #4875B4;
 }
 
-div#content-start .fa-envelope:hover{
-    transition: 0.8s;
-    color: #000000;
-}
 
 div#content-about p{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
