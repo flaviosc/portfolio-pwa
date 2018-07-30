@@ -4,8 +4,9 @@
     "theme_color": "#757575",
     "background_color": "#757575",
     "display": "standalone",
-    "Scope": "/",
-    "start_url": "/portfolio-pwa",
+    "scope": "/",
+    "start_url": "/?utm_source=homescreen",
+    "lang": "pt-BR",
     "icons": [
       {
         "src": "images/icons/icon-72x72.png",
