@@ -1,13 +1,14 @@
 {
-    "name": "Flávio Santana",
-    "short_name": "FSDev",
-    "theme_color": "#757575",
-    "background_color": "#757575",
-    "display": "standalone",
-    "scope": "/",
-    "start_url": "/?utm_source=homescreen",
-    "lang": "pt-BR",
-    "icons": [
+  "name": "Flávio Santana",
+  "short_name": "FSDev",
+  "theme_color": "#757575",
+  "background_color": "#757575",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/?utm_source=homescreen",
+  "lang": "pt-BR",
+  "orientation": "any",
+  "icons": [
       {
         "src": "images/icons/icon-72x72.png",
         "sizes": "72x72",
