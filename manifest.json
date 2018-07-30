@@ -1,13 +1,6 @@
 {
-  "name": "Flávio Santana",
   "short_name": "FSDev",
-  "theme_color": "#757575",
-  "background_color": "#757575",
-  "display": "standalone",
-  "scope": "/",
-  "start_url": "https://flaviosc.github.io/portfolio-pwa/?utm_source=homescreen",
-  "lang": "pt-BR",
-  "orientation": "any",
+  "name": "Flávio Santana",
   "icons": [
       {
         "src": "images/icons/icon-72x72.png",
@@ -50,5 +43,8 @@
         "type": "image/png"
       }
     ],
-    "splash_pages": null
+    "start_url": "/?utm_source=homescreen",
+    "background_color": "#757575",
+    "Theme_color": "#757575",
+    "display": "standalone"
   }
