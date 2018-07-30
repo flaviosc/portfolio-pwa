@@ -5,7 +5,7 @@
   "background_color": "#757575",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/?utm_source=homescreen",
+  "start_url": "https://flaviosc.github.io/portfolio-pwa/?utm_source=homescreen",
   "lang": "pt-BR",
   "orientation": "any",
   "icons": [
