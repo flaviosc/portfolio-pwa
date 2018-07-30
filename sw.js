@@ -1,4 +1,4 @@
-const staticCacheName = 'flavio-santana-{{ site.time | date: "%Y-%m-%d-%H-%M" }}';
+const staticCacheName = 'flavio-santana-1';
 
 const filesToCache = [
     '/index.html'
