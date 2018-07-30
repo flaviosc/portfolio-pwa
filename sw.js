@@ -22,7 +22,7 @@ this.addEventListener('activate', event => {
       caches.keys().then(cacheNames => {
         return Promise.all(
           cacheNames
-            .filter(cacheName => (cacheName.startsWith('flavio-santana-')))
+            .filter(cacheName => (cacheName.startsWith('flavio-santana-1')))
             .filter(cacheName => (cacheName !== staticCacheName))
             .map(cacheName => caches.delete(cacheName))
         );
