@@ -4,6 +4,7 @@ $('.carousel.carousel-slider').carousel({
     indicators: true
 });
 
+
 const arrow = document.querySelector('#verMais [href^="#"]');
 
 arrow.addEventListener('click', scrolltoIdOnClick);
