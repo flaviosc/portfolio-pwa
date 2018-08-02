@@ -45,3 +45,10 @@ function smoothScrollTo(endX, endY, duration) {
    window.scroll(newX, newY);
  }, 1000 / 60); // 60 fps
 }; 
+
+//service worker
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+             .register('./service-worker.js')
+             .then(function() { console.log('Service Worker Registered'); });
+  }
