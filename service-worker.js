@@ -41,6 +41,7 @@ self.addEventListener('install', function (e) {
     })
   )
 })
+
 // Delete outdated caches
 self.addEventListener('activate', function (e) {
   e.waitUntil(
