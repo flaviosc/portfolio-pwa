@@ -1,6 +1,10 @@
-const PREFIX = 'fsdev-';
-const HASH = %HASH%; // Computed at build time.
-const OFFLINE_CACHE = `${PREFIX}-${HASH}`;
+var APP_PREFIX = 'FSDev-';    // Identifier for this app (this needs to be consistent across every cache update)
+var VERSION = 'version_01';            // Version of the off-line cache (change this value everytime you want to update cache)
+var CACHE_NAME = APP_PREFIX + VERSION;
+var URLS = [                            // Add URL you want to cache in this list.
+  '/https://flaviosc.github.io/portfolio-pwa/',                     // If you have separate JS/CSS files,
+  '/https://flaviosc.github.io/portfolio-pwa//index.html'            // add path to those files here
+]
 
 var filesToCache = [
     '/index.html',
@@ -9,55 +13,52 @@ var filesToCache = [
     '/css/style.css'
 ];
 
-self.addEventListener('install', function(e) {
-  console.log('[ServiceWorker] Install');
-  e.waitUntil(
-    caches.open(OFFLINE_CACHE).then(function(cache) {
-      console.log('[ServiceWorker] Caching app shell');
-      return cache.addAll(%CACHE_LIST%);
+// Respond with cached resources
+self.addEventListener('fetch', function (e) {
+  console.log('fetch request : ' + e.request.url)
+  e.respondWith(
+    caches.match(e.request).then(function (request) {
+      if (request) { // if cache is available, respond with cache
+        console.log('responding with cache : ' + e.request.url)
+        return request
+      } else {       // if there are no cache, try fetching request
+        console.log('file is not cached, fetching : ' + e.request.url)
+        return fetch(e.request)
+      }
+
+      // You can omit if/else for console.log & put one line below like this too.
+      // return request || fetch(e.request)
     })
-  );
-});
+  )
+})
 
-self.addEventListener('activate', function(e) {
-    console.log('[ServiceWorker] Activate');
-    e.waitUntil(
-      caches.keys().then(function(keyList) {
-        return Promise.all(keyList.map(function(key) {
-          if (key != OFFLINE_CACHE && key.startsWith(`${PREFIX}-`) {
-            console.log('[ServiceWorker] Removing old cache', key);
-            return caches.delete(key);
-          }
-        }));
+// Cache resources
+self.addEventListener('install', function (e) {
+  e.waitUntil(
+    caches.open(CACHE_NAME).then(function (cache) {
+      console.log('installing cache : ' + CACHE_NAME)
+      return cache.addAll(URLS)
+    })
+  )
+})
+// Delete outdated caches
+self.addEventListener('activate', function (e) {
+  e.waitUntil(
+    caches.keys().then(function (keyList) {
+      // `keyList` contains all cache names under your username.github.io
+      // filter out ones that has this app prefix to create white list
+      var cacheWhitelist = keyList.filter(function (key) {
+        return key.indexOf(APP_PREFIX)
       })
-    );
-    return self.clients.claim();
-  });
+      // add current cache name to white list
+      cacheWhitelist.push(CACHE_NAME)
 
-self.addEventListener('fetch', function(e) {
-  if (event.request.mode == 'navigate') {
-		console.log('Handling fetch event for', event.request.url);
-		console.log(event.request);
-		event.respondWith(
-			fetch(event.request).catch(function(exception) {
-				// The `catch` is only triggered if `fetch()` throws an exception,
-				// which most likely happens due to the server being unreachable.
-				console.error(
-					'Fetch failed; returning offline page instead.',
-					exception
-				);
-				return caches.open(OFFLINE_CACHE).then(function(cache) {
-					return cache.match('/');
-				});
-			})
-		);
-	} else {
-		// It’s not a request for an HTML document, but rather for a CSS or SVG
-		// file or whatever…
-		event.respondWith(
-			caches.match(event.request).then(function(response) {
-				return response || fetch(event.request);
-			})
-		);
-	}
-});
+      return Promise.all(keyList.map(function (key, i) {
+        if (cacheWhitelist.indexOf(key) === -1) {
+          console.log('deleting cache : ' + keyList[i] )
+          return caches.delete(keyList[i])
+        }
+      }))
+    })
+  )
+})
