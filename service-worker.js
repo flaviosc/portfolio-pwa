@@ -1,4 +1,3 @@
-var dataCacheName = 'fsPWA-v1';
 var cacheName = 'fsPWA-2018-07';
 var filesToCache = [
     '/index.html',
@@ -22,7 +21,7 @@ self.addEventListener('activate', function(e) {
     e.waitUntil(
       caches.keys().then(function(keyList) {
         return Promise.all(keyList.map(function(key) {
-          if (key !== cacheName && key !== dataCacheName) {
+          if (key !== cacheName) {
             console.log('[ServiceWorker] Removing old cache', key);
             return caches.delete(key);
           }
