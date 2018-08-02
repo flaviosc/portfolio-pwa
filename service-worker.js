@@ -1,9 +1,11 @@
-var APP_PREFIX = 'FSDev-';    // Identifier for this app (this needs to be consistent across every cache update)
+var APP_PREFIX = 'FSDev_';    // Identifier for this app (this needs to be consistent across every cache update)
 var VERSION = 'version_01';            // Version of the off-line cache (change this value everytime you want to update cache)
 var CACHE_NAME = APP_PREFIX + VERSION;
 var URLS = [                            // Add URL you want to cache in this list.
-  '/https://flaviosc.github.io/portfolio-pwa/',                     // If you have separate JS/CSS files,
-  '/https://flaviosc.github.io/portfolio-pwa//index.html'            // add path to those files here
+  './css/style.css',                     // If you have separate JS/CSS files,
+  'index.html',
+  './js/app.js',
+  '/service-worker.js'            // add path to those files here
 ]
 
 var filesToCache = [
